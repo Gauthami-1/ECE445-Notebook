@@ -1,19 +1,19 @@
 # Jingyu Kang - Lab Notebook for Antweight Battlebot
 # Table of Contents
 - [02-21-2025 - Discussion for Block Diagram and Overall Design](#02-21-2025-discussion-for-block-diagram-and-overall-design)
-- [02-26-2025 - Specify Subsystems and Parts Decisions](#02-26-2025-Specify-Subsystems-and-Parts-Decisions)
-- [03-01-2025 - Designing First Round PCB with ESP32-C3](#03-01-2025-Designing-First-Round-PCB-with-ESP32-C3)
-- [03-03-2025 - Changes for Parts for Round 2 PCB](#03-03-2025-Changes-for-Parts-for-Round-2-PCB)
-- [03-12-2025 - Set Up Wireless Connection and Breadboard Demo Setup](#03-12-2025-Set-Up-Wireless-Connection-and-Breadboard-Demo-Setup)
-- [03-23-2025 - PCB with Wrong Parts](#03-23-2025-PCB-with-Wrong-Parts)
-- [03-25-2025 - Update on DC Motor, Battery, and Wheels](#03-25-2025-Update-on-DC-Motor,-Battery,-and-Wheels)
-- [03-27-2025 - 1st Round PCB Soldering/Testing](#03-27-2025-1st-Round-PCB-Soldering/Testing)
-- [03-28-2025 - Testing PCB with Xiao ESP32-C3](#03-28-2025-Testing-PCB-with-Xiao-ESP32-C3)
-- [04-03-2025 - Testing Motors Using Power Source](#04-03-2025-Testing-Motors-Using-Power-Source)
-- [04-18-2025 - Initial 3D Design](#04-18-2025-Initial-3D-Design)
-- [04-22-2025 - PCB Modifications for Final PCB](#04-22-2025-PCB-Modifications-for-Final-PCB)
-- [04-26-2025 - Final Chassis 3D Printing Complete and Assemble](#04-26-2025-Final-Chassis-3D-Printing-Complete-and-Assemble)
-- [05-02-2025 - Test Arrived PCB](#05-02-2025-Test-Arrived-PCB)
+- [02-26-2025 - Specify Subsystems and Parts Decisions](#02-26-2025-specify-subsystems-and-parts-decisions)
+- [03-01-2025 - Designing First Round PCB with ESP32-C3](#03-01-2025-designing-first-round-pcb-with-esp32-c3)
+- [03-03-2025 - Changes for Parts for Round 2 PCB](#03-03-2025-changes-for-parts-for-round-2-pcb)
+- [03-12-2025 - Set Up Wireless Connection and Breadboard Demo Setup](#03-12-2025-set-up-wireless-connection-and-breadboard-demo-setup)
+- [03-23-2025 - PCB with Wrong Parts](#03-23-2025-pcb-with-wrong-parts)
+- [03-25-2025 - Update on DC Motor, Battery, and Wheels](#03-25-2025-update-on-dc-motor,-battery,-and-wheels)
+- [03-27-2025 - 1st Round PCB Soldering/Testing](#03-27-2025-1st-round-pcb-soldering/testing)
+- [03-28-2025 - Testing PCB with Xiao ESP32-C3](#03-28-2025-testing-pcb-with-xiao-esp32-c3)
+- [04-03-2025 - Testing Motors Using Power Source](#04-03-2025-testing-motors-using-power-source)
+- [04-18-2025 - Initial 3D Design](#04-18-2025-initial-3d-design)
+- [04-22-2025 - PCB Modifications for Final PCB](#04-22-2025-pcb-modifications-for-final-pcb)
+- [04-26-2025 - Final Chassis 3D Printing Complete and Assemble](#04-26-2025-final-chassis-3d-printing-complete-and-assemble)
+- [05-02-2025 - Test Arrived PCB](#05-02-2025-test-arrived-pcb)
 
 ## 02-21-2025 - Discussion for Block Diagram and Overall Design
 Professor Gruev gave us ideas on which microcontroller to use for the battlebot as well as recommended to start with a devkit microcontroller on the breadboard to ensure the system is working before moving on. We implemented a block diagram with help from the designs of previous year teams and decided on the overall design of our battlebot.\
@@ -33,7 +33,7 @@ We decided which parts to use for each subsystem based on the weight requirement
 Total Weight: 583.15 grams\
 Weight Limit: 907.185 grams
 
-## 03-01-2025 - Designing First Round PCB with ESP32-C3
+## 03-01-2025 - Designing First Round PCB with ESP32 C3
 I designed a first round PCB with ESP32-S3 Devkit with a power subsystem using 5V and 3.3V voltage regulators. Both 5V and 3.3V outputs will be used to power the microcontroller as well as DRV8833 motor drivers. The GPIO output pins will be used to send output signals from the microcontroller to the motor drivers.\
 ![1st pcb image](1st_pcb.png)\
 ![ESP32-S3](esp32_s3.png)
@@ -58,7 +58,7 @@ The 390 brushed motor that arrived, which we intended to use for the tombstone w
 The 1st round PCB came. I soldered all the components and tried testing with the 9 volts battery connected as a power input. The voltage read out from the 5 volts voltage regulator and 3.3 volts voltage regulator did not read the correct values of 0.2 volts but rather close to 0.3 volts. The main problem I expected was that the capacitors connected to each voltage regulator are too high which drains the voltage going in and out. The switch is designed to turn on and off the power input to the ESP32 microcontroller.\
 ![2nd_pcbsch](2nd_pcbsch.png)
 
-## 03-28-2025 - Testing PCB with Xiao ESP32-C3
+## 03-28-2025 - Testing PCB with Xiao ESP32 C3
 I measured the input voltage of the Xiao ESP32-C3 from the power subsystem implemented using the voltmeter. The values were not reading approximately 5 volts nor 3.3 volts but rather close to 0.4 volts. However, since the values read from the voltage regulator outputs were within 5% of the value, I assume that the problem is with the PCB design.\
 ![breadboard_cir](breadboard_cir.png)
 
