@@ -126,7 +126,7 @@ I finalized the necessary parts and as listed below and ordered the parts that w
 I helped add the PCB with two voltage regulators one to step down to 5V another to step down to 3.3V with Nandika. Then I created the connections to the Drivers to the ESP. Then I sent it to Jay to complete the PCB level design connections after completing all the schematic Design connections. Then after Jay laid out the components I completed the final PCB Gerber files to send to order.
 Below I have attached an image of the PCB I had at the end of this task
 
-**Figure 1:** PCB Trial #1 
+**Figure 2:** PCB Trial #1 
 ![PCB Trial #1](PCBTrial1.png)
 
 ---
@@ -143,7 +143,7 @@ Then I made a checklist to figure what needs to be done next to complete the rev
   - Choose correct capacitor footprints (0805 vs tantalum)
   - Validate DRV8833 footprint
 
-**Figure 2:** Here is a picture of the new PCB Trial #2
+**Figure 3:** Here is a picture of the new PCB Trial #2
 ![PCB Trial #2](PCBTrial2.png)
 
 I realized that we are missing some of the auxiliary components to the driver chip so I Updated the driver schematic on the PCB based on this youtube video for the DRV8833 driver: [Link](https://www.youtube.com/watch?v=3dlswKrZEcA&t=801s)
@@ -177,9 +177,9 @@ I worked with Jay to solder the components we had at the time which were the cap
 **Work Done:**
 Here I did initial testing which showed that only the power subsystem worked. I then moved to the breadboard, confirmed motor function via PWM since PCB was having issues. I also used the following data sheets to create the appropriate connections on the bread board.
 
-**Figure 3:** The following is the data sheet for the motor driver
+**Figure 4:** The following is the data sheet for the motor driver
 ![DRV8833](DRV8833.png)
-**Figure 4:** The following is the data sheet for the ESP32C3
+**Figure 5:** The following is the data sheet for the ESP32C3
 ![ESP32C3](ESP32C3.png)
 
 Then used the following code to test the wheels functionality each time we wanted to run a base test:
@@ -189,13 +189,13 @@ Then used the following code to test the wheels functionality each time we wante
 
 Here is the measurement of the output of the 5V and 3.3V Voltage Regulator on the PCB for the power subsystem. The 5V will be used for the motors and the 3.3V will be used for the ESP
 
-**Figure 5:** 5V Voltage Regulator Output on the PCB
+**Figure 6:** 5V Voltage Regulator Output on the PCB
 ![5V Regulator Output](5VRegulatorOutput.png)
-**Figure 6:** 3.3V Voltage Regulator Output on the PCB
+**Figure 7:** 3.3V Voltage Regulator Output on the PCB
 ![3.3V Regulator Output](3.3VRegulatorOutput.png)
 
 - Also finalized the new updated block diagram which is attached below
-**Figure 7:** Block Diagram
+**Figure 8:** Block Diagram
 ![Block Diagram](BlockDiagram.png)
 
 
@@ -212,7 +212,8 @@ I found out that the ABS was used instead of PET-G and ABS is to heavy. I also r
 [Design File](https://www.tinkercad.com/things/1qpqPXCBS9p-bottom/edit?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard&sharecode=AA-KI3Bmg5dcyBxRz8_BAfUHwUg40pOsH4alZPG4oS0)
 
 Here is the picture of the 3-D print car I took when I picked up the initial design. 
-![Block Diagram](IncorrectCADDesign.png)
+**Figure 9:** Block Diagram
+![CAD Design Result](IncorrectCADDesign.png)
 
 
 ---
@@ -276,6 +277,7 @@ These calculations show that a 9V alkaline battery cannot reliably power the sys
 We decided to remove the top area of the battlebot so we reprinted the Chassis and assembled everything. I already had the assembled circuit board so I assembled gluing of both parts together to build the final product.
 
 Here is the picture of the final assembled battlebot:
+**Figure 10:** Final Design
 ![FinalDesign](FinalDesign.png)
 
 ---
@@ -289,6 +291,7 @@ Here is the picture of the final assembled battlebot:
 
 Here I attached the Driver PCB I created according to this[Link](https://lastminuteengineers.com/dual-dc-motor-driver-drivers/) :
 
+**Figure 11:** Driver PCB
 ![DriverPCB](DriverPCB.png)
 ---
 
