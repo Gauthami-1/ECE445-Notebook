@@ -62,9 +62,12 @@ Rechecked System Power Calculations:
 |   Battery Output      | 11.1V   | 2 × 22.75A       | ~504.4W available          |
 
 Power Calculation Breakdown:  
-We used the formula:  
-P = V × I, where P is power in watts, V is voltage in volts, and I is current in amperes.
+We used the formula:
 
+**Equation 1:**  
+\( P = V \times I \) — where **P** is power (W), **V** is voltage (V), and **I** is current (A).
+
+We use this equation throughout the notebook to validate power requirements.
 - Weapon Motor (RS2205):  
   11.1V × 13.5A = 149.85W (typical)  
   11.1V × 25A = 277.5W (peak)
@@ -229,9 +232,12 @@ Power System  (Based on 9V Battery Setup):
 | **Battery Output**        | 9V      | ~0.5–0.6A (alkaline)   | **~4.5–5.4W available** |
 
 Power Calculation Breakdown:  
-We used the formula:  
-P = V × I, where P is power in watts, V is voltage in volts, and I is current in amperes.
+We used the formula:
 
+**Equation 1:**  
+\( P = V \times I \) — where **P** is power (W), **V** is voltage (V), and **I** is current (A).
+
+We use this equation throughout the notebook to validate power requirements.
 - Weapon Motor (RS2205):  
   9V × 25A = 225W (burst)
 
