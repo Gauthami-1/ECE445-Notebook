@@ -65,7 +65,7 @@ Power Calculation Breakdown:
 We used the formula:
 
 **Equation 1:**  
-\( P = V \times I \) — where **P** is power (W), **V** is voltage (V), and **I** is current (A).
+P = V*I — where **P** is power (W), **V** is voltage (V), and **I** is current (A).
 
 We use this equation throughout the notebook to validate power requirements.
 - Weapon Motor (RS2205):  
@@ -133,7 +133,7 @@ These calculations confirm that our battery output supports the expected peak co
 ---
 
 ## March 12th, 2025 Refine PCB and Test New Schematic
-
+**Date:** March 12th, 2025
 **Objective:** Refine PCB and test new schematic  
 **Work Done:**
 - Created new schematic with improved connections
@@ -154,6 +154,7 @@ Updated the driver logic on the PCB based on this youtube video: [Link](https://
 
 ## March 23th, 2025 Ordered PCB and Rechecked the footprints
 
+**Date:** March 23th, 2025 
 **Objective:** Ordered PCB and Rechecked the footprints
 **Work Done:**
 - Corrected the footprint for each part 
@@ -235,7 +236,7 @@ Power Calculation Breakdown:
 We used the formula:
 
 **Equation 1:**  
-\( P = V \times I \) — where **P** is power (W), **V** is voltage (V), and **I** is current (A).
+ P = V * I — where **P** is power (W), **V** is voltage (V), and **I** is current (A).
 
 We use this equation throughout the notebook to validate power requirements.
 - Weapon Motor (RS2205):  
