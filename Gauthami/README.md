@@ -61,6 +61,33 @@ Rechecked System Power Calculations:
 |   Total (Peak)        | -       | -                | ~357W (Peak), ~178W Typical |
 |   Battery Output      | 11.1V   | 2 × 22.75A       | ~504.4W available          |
 
+Power Calculation Breakdown:  
+We used the formula:  
+P = V × I, where P is power in watts, V is voltage in volts, and I is current in amperes.
+
+- Weapon Motor (RS2205):  
+  11.1V × 13.5A = 149.85W (typical)  
+  11.1V × 25A = 277.5W (peak)
+
+- Mobility Motors (N20 ×2):  
+  3V × 0.03A = 0.09W (idle)  
+  3V × 1A = 3W (peak)
+
+- ESP32 + Peripherals:  
+  3.3V × 0.25A = 0.825W
+
+- Motor Driver (DRV8833):  
+  5V × 1A = 5W
+
+- Temperature Sensor:  
+  5V × 0.0001A = 0.0005W
+
+- Battery Output:  
+  11.1V × (2 × 22.75A) = 504.4W available
+
+These calculations confirm that our battery output supports the expected peak consumption while maintaining safe operating margins.
+
+
 ---
 
 ## February 28th, 2025 Begin PCB layout and circuit design
@@ -200,11 +227,48 @@ Power System  (Based on 9V Battery Setup):
 | **Total (Peak)**          | -       | -                      | **~245–250W (peak)**   |
 | **Battery Output**        | 9V      | ~0.5–0.6A (alkaline)   | **~4.5–5.4W available** |
 
+Power Calculation Breakdown:  
+We used the formula:  
+P = V × I, where P is power in watts, V is voltage in volts, and I is current in amperes.
+
+- Weapon Motor (RS2205):  
+  9V × 25A = 225W (burst)
+
+- Mobility Motors (N20 ×2):  
+  5V × 0.06A = 0.3W (idle)  
+  5V × 2A = 10W (peak)
+
+- ESP32-C3 + Peripherals:  
+  3.3V × 0.25A = 0.825W
+
+- Motor Drivers (×2 DRV8833):  
+  5V × 2A = 10W
+
+- Voltage Regulators:  
+  Losses estimated at ~2–4W based on drop-out and current draw
+
+- Battery Output (alkaline 9V):  
+  9V × 0.5A = 4.5W  
+  9V × 0.6A = 5.4W
+
+These calculations show that a 9V alkaline battery cannot reliably power the system under load, especially with the RS2205 motor, which alone exceeds the available power.
+
+
 ---
 
 ## References
 
-- ESP32-C3 DevKitM-1 Datasheet  
-- DRV8833 Dual H-Bridge Datasheet  
-- Thunder Power TP325-3SR70J Battery Datasheet  
-- [ECE 445 Wiki](https://ece.illinois.edu/ece445/wiki)
+- [ESP32-C3 DevKitM-1 Datasheet (HiLetgo)](https://www.amazon.com/HiLetgo-ESP32-C3-DevKitM-1-Development-ESP32-C3-MINI-1-ESP32-C3FN4/dp/B0CDWY6GDJ)
+- [DRV8833 Dual H-Bridge Motor Driver Datasheet](https://www.ti.com/product/DRV8833)
+- [Thunder Power TP325-3SR70J Battery Datasheet (Amazon Listing)](https://www.amazon.com/Thunder-Power-325mAh-Battery/dp/B00TIY3CN4) *(example placeholder link)*
+- [Pololu Greartisan DC 3V 19RPM N20 Motors (Amazon)](https://www.amazon.com/Greartisan-100RPM-Torque-Reduction-Gearbox/dp/B07FVQ7VPX)
+- [LM1117 Voltage Regulator Datasheet (TI)](https://www.ti.com/product/LM1117)
+- [LM35 Temperature Sensor Datasheet (TI)](https://www.ti.com/product/LM35)
+- [ESP32-C3 Pinout Diagram – Seeed Studio XIAO](https://wiki.seeedstudio.com/XIAO_ESP32C3_Getting_Started/)
+- [DRV8833 Pinout Diagram – Last Minute Engineers](https://lastminuteengineers.com/dual-dc-motor-driver-drivers/)
+- [KiCad EDA Tool](https://www.kicad.org/)
+- [YouTube – DRV8833 Logic Explanation (Video)](https://www.youtube.com/watch?v=3dlswKrZEcA&t=801s)
+- [TinkerCAD Design File for 3D Print](https://www.tinkercad.com/things/1qpqPXCBS9p-bottom/edit?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard&sharecode=AA-KI3Bmg5dcyBxRz8_BAfUHwUg40pOsH4alZPG4oS0)
+- [Keysight 34461A Multimeter Product Page](https://www.keysight.com/us/en/product/34461A/truevolt-digital-multimeter-6-digit-34461a.html)
+- [ECE 445 Course Wiki](https://ece.illinois.edu/ece445/wiki)
+
