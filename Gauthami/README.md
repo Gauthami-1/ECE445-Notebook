@@ -8,7 +8,7 @@ This notebook documents the design, development, and testing of our Antweight Ba
 ## Table of Contents
 
 - [January 27, 2025 Project Approval and Team Roles](#january-27-2025-project-approval-and-team-roles)
-- [Febuary 9th, 2025 Project Proposal](#febuary-9th-2025--project-proposal)
+- [February 9th, 2025 Project Proposal](#february-9th-2025--project-proposal)
 - [February 28th, 2025 Begin PCB layout and circuit design](#february-28th-2025-begin-pcb-layout-and-circuit-design)
 - [March 1st, 2025 Start PCB Design](#march-1st-2025-start-pcb-design)
 - [March 12th, 2025 Refine PCB and Test New Schematic](#march-12th-2025-refine-pcb-and-test-new-schematic)
@@ -16,7 +16,6 @@ This notebook documents the design, development, and testing of our Antweight Ba
 - [April 22nd, 2025 Bench Testing and First Motor Control](#april-22nd-2025-bench-testing-and-first-motor-control)
 - [April 23rd, 2025 Evaluate 3D print and adjust](#april-23rd-2025-evaluate-3d-print-and-adjust)
 - [April 24th, 2025 Testing Breadboard](#april-24th-2025-testing-breadboard)
-- [Figures, Schematics, and Diagrams](#figures-schematics-and-diagrams)
 - [References](#references)
 
 ---
@@ -32,9 +31,9 @@ This notebook documents the design, development, and testing of our Antweight Ba
 
 ---
 
-## Febuary 9th, 2025  Project Proposal 
+## February 9th, 2025  Project Proposal 
 
-**Date:** Febuary 9th, 2025  
+**Date:** February 9th, 2025  
 **Objective:** Figured out weight requirements and Created Proposal  
 **Work Done:**
 - Revised the proposal to improve and include power calculations for tolerance analysis
@@ -98,7 +97,7 @@ Rechecked System Power Calculations:
 - Also created the connections to the Drivers to the ESP
 - Below I have attached an image of the PCB I had at the end of this
 
-**Figures:**  
+**Figure 1:** PCB Trial #1 
 ![PCB Trial #1](PCBTrial1.png)
 
 ---
@@ -116,7 +115,7 @@ and realized that I was missing the square outline around the PCB
   - Choose correct capacitor footprints (0805 vs tantalum)
   - Validate DRV8833 footprint
 
-**Figures:**  
+**Figure 2:** PCB Trial #2
 ![PCB Trial #2](PCBTrial2.png)
 
 ---
@@ -136,12 +135,25 @@ and realized that I was missing the square outline around the PCB
 **Objective:** Test motor control via ESP32 + DRV8833  
 **Work Done:**
 - Initial testing showed only power subsystem worked
-- Moved to breadboard, confirmed motor function via PWM
+- Moved to breadboard, confirmed motor function via PWM since PCB was having issues
+- Used the following data sheets to create the appropriate connections on the bread board
+**Figure 3:** The following is the data sheet for the motor driver
+![DRV8833](DRV8833.png)
+**Figure 4:** The following is the data sheet for the ESP32C3
+![ESP32C3](ESP32C3.png)
+
 
 **Measurements** 
-Mesured the output of the 5V and 3.3V regulator
+Mesured the output of the 5V and 3.3V Voltage Regulator on the PCB for the power subsystem. The 5V will be used for the motors and the 3.3V will be used for the ESP
+**Figure 5:** 5V Regulator Output
 ![5V Regulator Output](5VRegulatorOutput.png)
-![3.3V Regulator Output](3.3VRegulatorOuput.png)
+**Figure 6:** 3.3V Regulator Output
+![3.3V Regulator Output](3.3VRegulatorOutput.png)
+
+- Also finalized the new updated block diagram
+**Figure 7:** Block Diagram
+![Block Diagram](BlockDiagram.png)
+
 
 ---
 
@@ -167,12 +179,6 @@ Mesured the output of the 5V and 3.3V regulator
 **Work Done:**
 - Supplied 5V to ESP32 for successful motor operation
 - Realized that out PCB supplied 3.3V to the 5V pin which is incorrect because the PCB has an internal voltage regulator that steps down to 3.3V
-
----
-
-## Figures, Schematics, and Diagrams
-
-![Block Diagram](BlockDiagram.png)
 
 ---
 
