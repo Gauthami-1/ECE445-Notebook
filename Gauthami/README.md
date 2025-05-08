@@ -175,15 +175,16 @@ Updated the driver logic on the PCB based on this youtube video: [Link](https://
 - Used the following code to test the wheels functionality each time we wanted to run a base test:
 [View PCB_ESP_TEST.ino](./PCB_ESP_TEST.ino)
 
-
 **Measurements** 
+
 Mesured the output of the 5V and 3.3V Voltage Regulator on the PCB for the power subsystem. The 5V will be used for the motors and the 3.3V will be used for the ESP
-**Figure 5:** 5V Regulator Output
+
+**Figure 5:** 5V Voltage Regulator Output on the PCB
 ![5V Regulator Output](5VRegulatorOutput.png)
-**Figure 6:** 3.3V Regulator Output
+**Figure 6:** 3.3V Voltage Regulator Output on the PCB
 ![3.3V Regulator Output](3.3VRegulatorOutput.png)
 
-- Also finalized the new updated block diagram
+- Also finalized the new updated block diagram which is attached below
 **Figure 7:** Block Diagram
 ![Block Diagram](BlockDiagram.png)
 
@@ -260,7 +261,7 @@ These calculations show that a 9V alkaline battery cannot reliably power the sys
 
 - [ESP32-C3 DevKitM-1 Datasheet (HiLetgo)](https://www.amazon.com/HiLetgo-ESP32-C3-DevKitM-1-Development-ESP32-C3-MINI-1-ESP32-C3FN4/dp/B0CDWY6GDJ)
 - [DRV8833 Dual H-Bridge Motor Driver Datasheet](https://www.ti.com/product/DRV8833)
-- [Thunder Power TP325-3SR70J Battery Datasheet (Amazon Listing)](https://www.amazon.com/Thunder-Power-325mAh-Battery/dp/B00TIY3CN4) *(example placeholder link)*
+- [Thunder Power TP325-3SR70J Battery Datasheet (Amazon Listing)](https://www.amazon.com/Thunder-Power-325mAh-Battery/dp/B00TIY3CN4)
 - [Pololu Greartisan DC 3V 19RPM N20 Motors (Amazon)](https://www.amazon.com/Greartisan-100RPM-Torque-Reduction-Gearbox/dp/B07FVQ7VPX)
 - [LM1117 Voltage Regulator Datasheet (TI)](https://www.ti.com/product/LM1117)
 - [LM35 Temperature Sensor Datasheet (TI)](https://www.ti.com/product/LM35)
