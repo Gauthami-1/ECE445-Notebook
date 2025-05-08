@@ -17,7 +17,7 @@
 
 ## 02-21-2025 - Discussion for Block Diagram and Overall Design
 Professor Gruev gave us ideas on which microcontroller to use for the battlebot as well as recommended to start with a devkit microcontroller on the breadboard to ensure the system is working before moving on. We implemented a block diagram with help from the designs of previous year teams and decided on the overall design of our battlebot.\
-![block diagram image](block_diagram.png)\
+![block diagram image](block_diagram.png)
 
 ## 02-26-2025 - Specify Subsystems and Parts Decisions
 I separated the whole system into multiple subsystems. The subsystems are power, communication, control, drivetrain, and weapon.\
@@ -31,55 +31,55 @@ We decided which parts to use for each subsystem based on the weight requirement
 - LM335AH: 0.3 grams [link](https://www.ti.com/product/LM335A/part-details/LM335AH/NOPB)
 - Estimation for 3D printed parts: 200 grams\
 Total Weight: 583.15 grams\
-Weight Limit: 907.185 grams\
+Weight Limit: 907.185 grams
 
 ## 03-01-2025 - Designing First Round PCB with ESP32-C3
 I designed a first round PCB with ESP32-S3 Devkit with a power subsystem using 5V and 3.3V voltage regulators. Both 5V and 3.3V outputs will be used to power the microcontroller as well as DRV8833 motor drivers. The GPIO output pins will be used to send output signals from the microcontroller to the motor drivers.\
 ![1st pcb image](1st_pcb.png)\
-![ESP32-S3](esp32_s3.png)\
+![ESP32-S3](esp32_s3.png)
 
 ## 03-03-2025 - Changes for Parts for Round 2 PCB
-The voltage output from the voltage regulators are expected to be around 5 volts max since that would be the highest voltage coming out of the regulator. This would not supply enough voltage for the Emax RS2205 2600KV brushless motor we decided to use. Also, since the Emax RS2205 2600KV brushless motor is extremely heavy in weight, we decided to use Greartisan DC 3V 19RPM N20 High Torque Speed Reduction Motor for both wheels on the drivetrain as well as the weapon tombstone motor.\
+The voltage output from the voltage regulators are expected to be around 5 volts max since that would be the highest voltage coming out of the regulator. This would not supply enough voltage for the Emax RS2205 2600KV brushless motor we decided to use. Also, since the Emax RS2205 2600KV brushless motor is extremely heavy in weight, we decided to use Greartisan DC 3V 19RPM N20 High Torque Speed Reduction Motor for both wheels on the drivetrain as well as the weapon tombstone motor.
 
 ## 03-12-2025 - Set Up Wireless Connection and Breadboard Demo Setup
 I created a program with Arduino that would program the GPIO pins on the ESP32 which will be input signals for the motor driver DRV8833. The GPIO pins of the ESP32 is used as an input towards IN1 and IN2 pins as well as IN3 and IN4 pins of the DRV8833 motor driver  respectfully for each side of the motor for the drivetrain which will be sent out to OUT1, OUT2 and OUT3, OUT4 pins as an output towards the DC motor. This will be further incorporated with a python program, which will mount a WiFi connection with the ESP32 and program for direction control as well as weapon speed control.\
 
-I also created a breadboard setup in order to test the microcontroller connection towards the two DRV8833 motor drivers and output to the DC motors. For each DC motor, two GPIO pins are connected to IN1 and IN2 of the DRV8833 motor driver, which is then connected to OUT1 and OUT2 and towards the DC motor respectively.\
+I also created a breadboard setup in order to test the microcontroller connection towards the two DRV8833 motor drivers and output to the DC motors. For each DC motor, two GPIO pins are connected to IN1 and IN2 of the DRV8833 motor driver, which is then connected to OUT1 and OUT2 and towards the DC motor respectively.
 
 ## 03-23-2025 - PCB with Wrong Parts
-The ESP32-C3, 5V and 3.3V voltage regulator, and switch for the on and off button are printed on the PCB as smaller than parts we purchased. Therefore, we could not solder the PCB that arrived. I made modifications with the parts and corresponding connections respectively for the next round order.\
+The ESP32-C3, 5V and 3.3V voltage regulator, and switch for the on and off button are printed on the PCB as smaller than parts we purchased. Therefore, we could not solder the PCB that arrived. I made modifications with the parts and corresponding connections respectively for the next round order.
 
 ## 03-25-2025 - Update on DC Motor, Battery, and Wheels
 The 390 brushed motor that arrived, which we intended to use for the tombstone weapon system, was extremely heavy and required higher voltage and current input than we expected. The current PCB board we have could supply at max 6 volts and where the operating voltage of the 390 brushed DC motor is 12 volts. Moreover, considering one of the high level requirements is that the weight of the entire battlebot is 2 lbs, the 390 brushed DC motor is too heavy so we decided to use Greartisan DC motor for all of our motors. The THP 325-3SR70J battery did not arrive but since we only require over 5 volts as our starting voltage input, we decided to use a 9 volts battery. For the wheels, we decided to use mecanum wheels for more precise directional change of the battlebot.\
 ![wheel image](wheels.png)\
-![gert_motor](gert_motor.png)\
+![gert_motor](gert_motor.png)
 
 ## 03-27-2025 - 1st Round PCB Soldering/Testing
 The 1st round PCB came. I soldered all the components and tried testing with the 9 volts battery connected as a power input. The voltage read out from the 5 volts voltage regulator and 3.3 volts voltage regulator did not read the correct values of 0.2 volts but rather close to 0.3 volts. The main problem I expected was that the capacitors connected to each voltage regulator are too high which drains the voltage going in and out. The switch is designed to turn on and off the power input to the ESP32 microcontroller.\
-![2nd_pcbsch](2nd_pcbsch.png)\
+![2nd_pcbsch](2nd_pcbsch.png)
 
 ## 03-28-2025 - Testing PCB with Xiao ESP32-C3
 I measured the input voltage of the Xiao ESP32-C3 from the power subsystem implemented using the voltmeter. The values were not reading approximately 5 volts nor 3.3 volts but rather close to 0.4 volts. However, since the values read from the voltage regulator outputs were within 5% of the value, I assume that the problem is with the PCB design.\
-![breadboard_cir](breadboard_cir.png)\
+![breadboard_cir](breadboard_cir.png)
 
 ## 04-03-2025 - Testing Motors Using Power Source
 Since the PCB design was faulty, I decided to create a breadboard design using parts that are used on the PCB in order to check the functionality. The breadboard to check the functionality of the ESP32-C3, DRV8833 motor driver, and DC motors were complete and testing was also successful. From multiple trials, the input voltages to the ESP32-C3 was measured within a 5% error margin.\
 ![esp32-c3](esp32_c3.png)\
-![voltage table](voltage_table.png)\
+![voltage table](voltage_table.png)
 
 ## 04-18-2025 - Initial 3D Design
 The initial 3D printed design came out to be a failure since the material that got printed out was extremely heavy and the walls where we intended to attach the wheels were extremely thick, making it impossible to attach the DC motors. I made the measurements again for wheel mounting locations as well as a secure place for the PCB board and printed out a new version.\
-![failed 3D Print](fail_3dprint.png)\
+![failed 3D Print](fail_3dprint.png)
 
 ## 04-22-2025 - PCB Modifications for Final PCB
 I designed a whole new PCB design for the final PCB. Instead of having one PCB board, I created a separate PCB for the motor driver usage and another for voltage regulator and power into the ESP32-C3 as well as the DRV8833 motor driver. In order to make the testing and debugging easier, I added connectors for power inputs, therefore, we could verify power inputs to the ESP32-C3 and motor driver manually with the voltmeter and check if the current flow is enough.\
-![final_pcbsch](final_pcbsch.png)\
+![final_pcbsch](final_pcbsch.png)
 
 ## 04-26-2025 - Final Chassis 3D Printing Complete and Assemble
 We assembled the final chassis as a group with the 3D printed model and mounted a breadboard we will use for the final demo. We tested the operation of wheels and the tombstone blade using the Arduino and python code we programmed and verified it was functioning properly.\
-![final_demo](final_demo.png)\
+![final_demo](final_demo.png)
 
 ## 05-02-2025 - Test Arrived PCB
 I soldered all parts required for the final PCB that arrived late and tested. The main problem was that the PCB design we have had 3.3 volts connection to the connector since we thought the ESP32 should be powered with 3.3 volts in order to work. However, since the ESP32 has an internal 3.3 volts regulator, the connection should not be made. The ESP32 was only programmable occasionally due to power depletion at the 3.3 volts open connection and was impossible to test.\
-![final_pcb](final_pcb.png)\
+![final_pcb](final_pcb.png)
 
