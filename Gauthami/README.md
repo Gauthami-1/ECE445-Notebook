@@ -118,6 +118,8 @@ and realized that I was missing the square outline around the PCB
 **Figure 2:** PCB Trial #2
 ![PCB Trial #2](PCBTrial2.png)
 
+Updated the driver logic on the PCB based on this youtube video: [Link](https://www.youtube.com/watch?v=3dlswKrZEcA&t=801s)
+
 ---
 
 ## March 23th, 2025 Ordered PCB and Rechecked the footprints
@@ -137,10 +139,14 @@ and realized that I was missing the square outline around the PCB
 - Initial testing showed only power subsystem worked
 - Moved to breadboard, confirmed motor function via PWM since PCB was having issues
 - Used the following data sheets to create the appropriate connections on the bread board
+
 **Figure 3:** The following is the data sheet for the motor driver
 ![DRV8833](DRV8833.png)
 **Figure 4:** The following is the data sheet for the ESP32C3
 ![ESP32C3](ESP32C3.png)
+
+- Used the following code to test the wheels functionality each time we wanted to run a base test:
+[View PCB_ESP_TEST.ino](./PCB_ESP_TEST.ino)
 
 
 **Measurements** 
@@ -179,6 +185,20 @@ Mesured the output of the 5V and 3.3V Voltage Regulator on the PCB for the power
 **Work Done:**
 - Supplied 5V to ESP32 for successful motor operation
 - Realized that out PCB supplied 3.3V to the 5V pin which is incorrect because the PCB has an internal voltage regulator that steps down to 3.3V
+- Adjusted the breadboard to have a functional battle bot for the demo using the datasheets as refered earlier in the notebook.
+- Updated Power table with the new battery and 3 Grertian motors:
+
+Power System  (Based on 9V Battery Setup):
+
+| Subsystem                  | Voltage | Current Estimate       | Power Estimate         |
+|---------------------------|---------|------------------------|------------------------|
+| Weapon Motor (RS2205)     | 9V      | Up to 25A (burst)      | ~225W (burst)          |
+| Mobility Motors (N20 ×2)  | 5V      | 0.06–2A total          | 0.3W–10W               |
+| ESP32-C3 + Peripherals    | 3.3V    | 0.25A                  | 0.825W                 |
+| Motor Drivers (×2 DRV8833)| 5V      | ~2A combined           | ~10W                   |
+| Voltage Regulators        | 9V in   | ~0.5–1.2A total (est.) | Losses ~2–4W           |
+| **Total (Peak)**          | -       | -                      | **~245–250W (peak)**   |
+| **Battery Output**        | 9V      | ~0.5–0.6A (alkaline)   | **~4.5–5.4W available** |
 
 ---
 
