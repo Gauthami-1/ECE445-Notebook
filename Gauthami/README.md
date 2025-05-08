@@ -12,10 +12,13 @@ This notebook documents the design, development, and testing of our Antweight Ba
 - [February 28th, 2025 Begin PCB layout and circuit design](#february-28th-2025-begin-pcb-layout-and-circuit-design)
 - [March 1st, 2025 Start PCB Design](#march-1st-2025-start-pcb-design)
 - [March 12th, 2025 Refine PCB and Test New Schematic](#march-12th-2025-refine-pcb-and-test-new-schematic)
-- [March 23th, 2025 Ordered PCB and Rechecked the footprints](#march-23th-2025-ordered-pcb-and-rechecked-the-footprints)
+- [March 23rd, 2025 Ordered PCB and Rechecked the footprints](#march-23rd-2025-ordered-pcb-and-rechecked-the-footprints)
+- [March 27th, 2025 Solder Components](#march-27th-2025-solder-components)
 - [April 22nd, 2025 Bench Testing and First Motor Control](#april-22nd-2025-bench-testing-and-first-motor-control)
 - [April 23rd, 2025 Evaluate 3D print and adjust](#april-23rd-2025-evaluate-3d-print-and-adjust)
 - [April 24th, 2025 Testing Breadboard](#april-24th-2025-testing-breadboard)
+- [April 26th, 2025 Final Chasis Design](#april-26th-2025-final-chasis-design)
+- [May 2nd, 2025 Late PCB arrived](#may-2nd-2025-late-pcb-arrived)
 - [References](#references)
 
 ---
@@ -25,9 +28,10 @@ This notebook documents the design, development, and testing of our Antweight Ba
 **Date:** January 27, 2025  
 **Objective:** Define team roles, finalize project concept  
 **Work Done:**
-- Wrote and submitted initial project proposal
-- Defined system goals and created a high-level block diagram
-- Assigned team roles and subsystems
+I wrote and submitted the initial project proposal. I also defined the system goals. As a team assigned team roles and subsystems. I helped create the initial Block diagram which included all the parts and figured out all the voltage requirements as shown in the diagram below:
+
+**Figure 1:** Initial Block Diagram
+![Initial Block Diagram](StartingBlockDiagram.png)
 
 ---
 
@@ -36,8 +40,7 @@ This notebook documents the design, development, and testing of our Antweight Ba
 **Date:** February 9th, 2025  
 **Objective:** Figured out weight requirements and Created Proposal  
 **Work Done:**
-- Revised the proposal to improve and include power calculations for tolerance analysis
-- Calculated the weight requirements:
+I Revised the proposal to improve and include power calculations for tolerance analysis. I also calculated the weight requirements as shown below:
 
     Emax RS2205 2600KV: 29g  
     ESP-32 Dev kit: 28.35g  
@@ -49,7 +52,7 @@ This notebook documents the design, development, and testing of our Antweight Ba
     3D printed parts estimate: 200g  
     **Total Weight:** 583.15g / **Limit:** 907.18g
 
-Rechecked System Power Calculations:
+I rechecked the System Power Calculations:
 
 | Subsystem             | Voltage | Current Estimate | Power Estimate            |
 |-----------------------|---------|------------------|----------------------------|
@@ -97,10 +100,7 @@ These calculations confirm that our battery output supports the expected peak co
 **Date:** February 28th, 2025
 **Objective:** Begin PCB layout and circuit design  
 **Work Done:**
-- Created power system schematic in KiCad
-- Added ESP32-C3, DRV8833, LM1117 regulators
-- Planned UART & I2C routing
-- Also finalized Parts and Components to buy ASAP:
+I finalized the necessary parts and as listed below and ordered the parts that were needed ASAP:
   - ESP32-C3 DevKitM-1: Compact RISC-V microcontroller with built-in Wi-Fi. Hosts a local web server to receive commands and sends PWM to motor drivers. Operates at 3.3V.
   - Greartisan DC 3V 19RPM N20 Motors: High-torque, low-speed motors to drive wheels.
   - DRV8833 Dual H-Bridge Driver: Enables bidirectional motor control.
@@ -114,7 +114,7 @@ These calculations confirm that our battery output supports the expected peak co
   - **Total:** ~$80
 
 **TA Meeting:**  
-- TA gave us lockers and lab kit for the class
+- The TA gave us lockers and lab kit for the class
 
 ---
 
@@ -123,9 +123,8 @@ These calculations confirm that our battery output supports the expected peak co
 **Date:**  March 1st, 2025
 **Objective:** Start PCB Design
 **Work Done:**
-- Created a PCB with two voltage regulators one to step down to 5V another to step down to 3.3V 
-- Also created the connections to the Drivers to the ESP
-- Below I have attached an image of the PCB I had at the end of this
+I helped add the PCB with two voltage regulators one to step down to 5V another to step down to 3.3V with Nandika. Then I created the connections to the Drivers to the ESP. Then I sent it to Jay to complete the PCB level design connections after completing all the schematic Design connections. Then after Jay laid out the components I completed the final PCB Gerber files to send to order.
+Below I have attached an image of the PCB I had at the end of this task
 
 **Figure 1:** PCB Trial #1 
 ![PCB Trial #1](PCBTrial1.png)
@@ -136,52 +135,59 @@ These calculations confirm that our battery output supports the expected peak co
 **Date:** March 12th, 2025
 **Objective:** Refine PCB and test new schematic  
 **Work Done:**
-- Created new schematic with improved connections
-- Added second DRV8833 for tombstone control
-- Realized that we are having an outline error and went to office hours to get help to debug the error
-and realized that I was missing the square outline around the PCB
+I Created new schematic with improved connections Added second DRV8833 for tombstone control and I realized that we are having an outline error and went to office hours to get help to debug the error
+and realized that I was missing the square outline around the PCB in edge.cuts layer.
+Then I made a checklist to figure what needs to be done next to complete the revised PCB
 - Checklist for next revision of PCB:
   - Verify driver/ESP connections
   - Choose correct capacitor footprints (0805 vs tantalum)
   - Validate DRV8833 footprint
 
-**Figure 2:** PCB Trial #2
+**Figure 2:** Here is a picture of the new PCB Trial #2
 ![PCB Trial #2](PCBTrial2.png)
 
-Updated the driver logic on the PCB based on this youtube video: [Link](https://www.youtube.com/watch?v=3dlswKrZEcA&t=801s)
+I realized that we are missing some of the auxiliary components to the driver chip so I Updated the driver schematic on the PCB based on this youtube video for the DRV8833 driver: [Link](https://www.youtube.com/watch?v=3dlswKrZEcA&t=801s)
 
 ---
 
-## March 23th, 2025 Ordered PCB and Rechecked the footprints
+## March 23rd, 2025 Ordered PCB and Rechecked the footprints
 
-**Date:** March 23th, 2025 
+**Date:** March 23rd, 2025 
 **Objective:** Ordered PCB and Rechecked the footprints
 **Work Done:**
-- Corrected the footprint for each part 
-- Checked the ECE shop to make sure we have the appropriate capacitors and parts to solder onto the board
+We realized there was an issue with the footprint and corrected it into our PCB. I Checked the ECE shop to make sure we have the appropriate capacitors and parts to solder onto the board
 
 ---
+
+
+## March 27th, 2025 Solder Components
+
+**Date:** March 27th, 2025 
+**Objective:** Solder Components
+**Work Done:**
+I worked with Jay to solder the components we had at the time which were the capacitors and resistors onto the PCB.
+
+---
+
 
 ## April 22nd, 2025 Bench Testing and First Motor Control
 
 **Date:** April 22nd, 2025  
 **Objective:** Test motor control via ESP32 + DRV8833  
 **Work Done:**
-- Initial testing showed only power subsystem worked
-- Moved to breadboard, confirmed motor function via PWM since PCB was having issues
-- Used the following data sheets to create the appropriate connections on the bread board
+Here I did initial testing which showed that only the power subsystem worked. I then moved to the breadboard, confirmed motor function via PWM since PCB was having issues. I also used the following data sheets to create the appropriate connections on the bread board.
 
 **Figure 3:** The following is the data sheet for the motor driver
 ![DRV8833](DRV8833.png)
 **Figure 4:** The following is the data sheet for the ESP32C3
 ![ESP32C3](ESP32C3.png)
 
-- Used the following code to test the wheels functionality each time we wanted to run a base test:
+Then used the following code to test the wheels functionality each time we wanted to run a base test:
 [View PCB_ESP_TEST.ino](./PCB_ESP_TEST.ino)
 
 **Measurements** 
 
-Mesured the output of the 5V and 3.3V Voltage Regulator on the PCB for the power subsystem. The 5V will be used for the motors and the 3.3V will be used for the ESP
+Here is the measurement of the output of the 5V and 3.3V Voltage Regulator on the PCB for the power subsystem. The 5V will be used for the motors and the 3.3V will be used for the ESP
 
 **Figure 5:** 5V Voltage Regulator Output on the PCB
 ![5V Regulator Output](5VRegulatorOutput.png)
@@ -200,13 +206,14 @@ Mesured the output of the 5V and 3.3V Voltage Regulator on the PCB for the power
 **Date:** April 23rd, 2025
 **Objective:** Evaluate 3D print and adjust  
 **Work Done:**
-- Found that ABS was used instead of PET-G and ABS is to heavy
-- Redesigned bot to be shorter and lighter
-- Updated spreadsheet to track part weights
-- Adjusted wheel mount height as the wheel holes were placed too high
+I found out that the ABS was used instead of PET-G and ABS is to heavy. I also realized that we had designed the robot to have wheels that are to high so I redesigned bot to be shorter and lighter. Then I updated spreadsheet to track part weights. I Adjusted wheel mount height as the wheel holes were placed too high. I attached the link to my CAD design below.
 
 **TinkerCAD Link:**  
 [Design File](https://www.tinkercad.com/things/1qpqPXCBS9p-bottom/edit?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard&sharecode=AA-KI3Bmg5dcyBxRz8_BAfUHwUg40pOsH4alZPG4oS0)
+
+Here is the picture of the 3-D print car I took when I picked up the initial design. 
+![Block Diagram](IncorrectCADDesign.png)
+
 
 ---
 
@@ -215,10 +222,7 @@ Mesured the output of the 5V and 3.3V Voltage Regulator on the PCB for the power
 **Date:** April 24th, 2025  
 **Objective:** Resolve motor control issues  
 **Work Done:**
-- Supplied 5V to ESP32 for successful motor operation
-- Realized that out PCB supplied 3.3V to the 5V pin which is incorrect because the PCB has an internal voltage regulator that steps down to 3.3V
-- Adjusted the breadboard to have a functional battle bot for the demo using the datasheets as refered earlier in the notebook.
-- Updated Power table with the new battery and 3 Grertian motors:
+I tested the supplied 5V to ESP32 for successful motor operation. I realized that our PCB supplied 3.3V to the 5V pin which is incorrect because the PCB has an internal voltage regulator that steps down to 3.3V. I adjusted the breadboard to have a functional battle bot for the demo using the datasheets as referred earlier in the notebook.I updated Power table with the new battery and 3 Greartisan motors:
 
 Power System  (Based on 9V Battery Setup):
 
@@ -262,6 +266,30 @@ We use this equation throughout the notebook to validate power requirements.
 These calculations show that a 9V alkaline battery cannot reliably power the system under load, especially with the RS2205 motor, which alone exceeds the available power.
 
 
+---
+
+## April 26th, Final Chasis Design
+
+**Date:** April 26th, 2025
+**Objective:** Evaluate 3D print and adjust  
+**Work Done:**
+We decided to remove the top area of the battlebot so we reprinted the Chassis and assembled everything. I already had the assembled circuit board so I assembled gluing of both parts together to build the final product.
+
+Here is the picture of the final assembled battlebot:
+![FinalDesign](FinalDesign.png)
+
+---
+
+## May 2nd, Late PCB arrived
+
+**Date:** May 2nd, 2025
+**Objective:** Late PCB arrived
+**Work Done:**
+- The Driver PCB I designed and the Power system PCB that Jay Designed arrived too late. When it arrived it had grounding issues in the Power System PCB. Because of this issue the driver PCB we planned to connect to the power system PCB also did not work. 
+
+Here I attached the Driver PCB I created according to this[Link](https://lastminuteengineers.com/dual-dc-motor-driver-drivers/) :
+
+![DriverPCB](DriverPCB.png)
 ---
 
 ## References
