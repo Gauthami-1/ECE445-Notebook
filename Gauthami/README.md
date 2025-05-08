@@ -1,0 +1,184 @@
+# Gauthami Yenne – Lab Notebook for Antweight Battlebot
+
+## Overview
+This notebook documents the design, development, and testing of our Antweight Battlebot project for ECE 445, Spring 2025. It includes weekly entries, design decisions, schematics, experiments, and TA meeting notes. This log supports the creation of the design review, final paper, and serves as a professional engineering record.
+
+---
+
+## Table of Contents
+
+- [January 27, 2025 Project Approval and Team Roles](#january-27-2025-project-approval-and-team-roles)
+- [Febuary 9th, 2025 Project Proposal](#febuary-9th-2025--project-proposal)
+- [February 28th, 2025 Begin PCB layout and circuit design](#february-28th-2025-begin-pcb-layout-and-circuit-design)
+- [March 1st, 2025 Start PCB Design](#march-1st-2025-start-pcb-design)
+- [March 12th, 2025 Refine PCB and Test New Schematic](#march-12th-2025-refine-pcb-and-test-new-schematic)
+- [March 23th, 2025 Ordered PCB and Rechecked the footprints](#march-23th-2025-ordered-pcb-and-rechecked-the-footprints)
+- [April 22nd, 2025 Bench Testing and First Motor Control](#april-22nd-2025-bench-testing-and-first-motor-control)
+- [April 23rd, 2025 Evaluate 3D print and adjust](#april-23rd-2025-evaluate-3d-print-and-adjust)
+- [April 24th, 2025 Testing Breadboard](#april-24th-2025-testing-breadboard)
+- [Figures, Schematics, and Diagrams](#figures-schematics-and-diagrams)
+- [References](#references)
+
+---
+
+## January 27, 2025 Project Approval and Team Roles
+
+**Date:** January 27, 2025  
+**Objective:** Define team roles, finalize project concept  
+**Work Done:**
+- Wrote and submitted initial project proposal
+- Defined system goals and created a high-level block diagram
+- Assigned team roles and subsystems
+
+---
+
+## Febuary 9th, 2025  Project Proposal 
+
+**Date:** Febuary 9th, 2025  
+**Objective:** Figured out weight requirements and Created Proposal  
+**Work Done:**
+- Revised the proposal to improve and include power calculations for tolerance analysis
+- Calculated the weight requirements:
+
+    Emax RS2205 2600KV: 29g  
+    ESP-32 Dev kit: 28.35g  
+    THP 325-3SR70J Battery (x2): 70g  
+    Greartisan DC 3V 19RPM N20 Motor: 9g  
+    DRV8833 Motor Driver: 1.5g  
+    3 wheels: 210g  
+    LM335AH: 0.3g  
+    3D printed parts estimate: 200g  
+    **Total Weight:** 583.15g / **Limit:** 907.18g
+
+Rechecked System Power Calculations:
+
+| Subsystem             | Voltage | Current Estimate | Power Estimate            |
+|-----------------------|---------|------------------|----------------------------|
+| Weapon Motor (RS2205) | 11.1V   | Up to 25A        | 150W–277.5W                |
+| Mobility Motors (N20) | 3V      | 0.03–1A          | 0.09W–3W                   |
+| ESP32 + Peripherals   | 3.3V    | 0.25A            | 0.825W                     |
+| Motor Driver (DRV8833)| 5V      | ~1A              | Up to 5W                   |
+| Temperature Sensor    | 5V      | ~0.1mA           | ~0.0005W                   |
+|   Total (Peak)        | -       | -                | ~357W (Peak), ~178W Typical |
+|   Battery Output      | 11.1V   | 2 × 22.75A       | ~504.4W available          |
+
+---
+
+## February 28th, 2025 Begin PCB layout and circuit design
+**Date:** February 28th, 2025
+**Objective:** Begin PCB layout and circuit design  
+**Work Done:**
+- Created power system schematic in KiCad
+- Added ESP32-C3, DRV8833, LM1117 regulators
+- Planned UART & I2C routing
+- Also finalized Parts and Components to buy ASAP:
+  - ESP32-C3 DevKitM-1: Compact RISC-V microcontroller with built-in Wi-Fi. Hosts a local web server to receive commands and sends PWM to motor drivers. Operates at 3.3V.
+  - Greartisan DC 3V 19RPM N20 Motors: High-torque, low-speed motors to drive wheels.
+  - DRV8833 Dual H-Bridge Driver: Enables bidirectional motor control.
+  - LM335AH Temperature Sensor: Mounted near the weapon motor to detect overheating.
+- Prices of the components:
+  - ESP32-C3 DevKitM-1 - $13  [Link](https://www.amazon.com/HiLetgo-ESP32-C3-DevKitM-1-Development-ESP32-C3-MINI-1-ESP32-C3FN4/dp/B0CDWY6GDJ?source=ps-sl-shoppingads-lpcontext&ref_=fplfs&psc=1&smid=A30QSGOJR8LMXA)
+  - DRV8833 or L9110H Motor Driver - $8  [Link] (https://www.amazon.com/KOOBOOK-DRV8833-Module-Bridge-Controller/dp/B07S7Z8CFL/ref=sr_1_2?crid=3S1F21ZMLS27B&dib=eyJ2IjoiMSJ9.dLM3Kpd0V8IvEV9GNbQRKM5sPJERBPGjFUXKKjeNhdLN3zxKqOHs326EiMgZ7VqpV-2FiHgNxq3TwGhn1sHRGUhOvqTQ3dcPavKRfo5h0ytJlz3RQB2bdC7VzSTHJhsQVHvoz2S9CVTCZKBw2DcqQ5ako4agGzfUlq0GQwnC3C9PMRoCaQiRCrLXRFD327jdY-eREiDYP35x7rYiCuEJWtindrd7j3YvelwAGKmsJfktqZw9mBcEkww-6vjrcL9KFEHseE-AqDogzc2nhWxsxyLEvVcPgIEgImmZE3Brp0Krkhu_o2_umaDlZ68FJf4hfv-kh6MByjSJd3gRzUz-LYdlnNxKVvMtfY7MJRDUl14.r8bvN6GuCJO6D9M4w_Skix2AoMZhd7E4WP-4m6kmY4w&dib_tag=se&keywords=DRV8833&qid=1740529371&s=industrial&sprefix=drv8833%2Cindustrial%2C118&sr=1-2&th=1)
+  - Thunder Power Battery - $20.99  
+  - Pololu Motors (x2) - $28.95  
+  - Compatible Wheels (x3) - $8.95  [Link] (https://www.amazon.com/Greartisan-100RPM-Torque-Reduction-Gearbox/dp/B07FVQ7VPX/ref=asc_df_B07FVQ7VPX?mcid=4f61147da4de3743823193db903ff739&hvocijid=5759737562941062527-B07FVQ7VPX-&hvexpln=73&tag=hyprod-20&linkCode=df0&hvadid=730432682330&hvpos=&hvnetw=g&hvrand=5759737562941062527&hvpone=&hvptwo=&hvqmt=&hvdev=c&hvdvcmdl=&hvlocint=&hvlocphy=9022196&hvtargid=pla-2281435178378&th=1)
+  - **Total:** ~$80
+
+**TA Meeting:**  
+- TA gave us lockers and lab kit for the class
+
+---
+
+## March 1st, 2025 Start PCB Design
+
+**Date:**  March 1st, 2025
+**Objective:** Start PCB Design
+**Work Done:**
+- Created a PCB with two voltage regulators one to step down to 5V another to step down to 3.3V 
+- Also created the connections to the Drivers to the ESP
+- Below I have attached an image of the PCB I had at the end of this
+
+**Figures:**  
+![PCB Trial #1](PCBTrial1.png)
+
+---
+
+## March 12th, 2025 Refine PCB and Test New Schematic
+
+**Objective:** Refine PCB and test new schematic  
+**Work Done:**
+- Created new schematic with improved connections
+- Added second DRV8833 for tombstone control
+- Realized that we are having an outline error and went to office hours to get help to debug the error
+and realized that I was missing the square outline around the PCB
+- Checklist for next revision of PCB:
+  - Verify driver/ESP connections
+  - Choose correct capacitor footprints (0805 vs tantalum)
+  - Validate DRV8833 footprint
+
+**Figures:**  
+![PCB Trial #2](PCBTrial2.png)
+
+---
+
+## March 23th, 2025 Ordered PCB and Rechecked the footprints
+
+**Objective:** Ordered PCB and Rechecked the footprints
+**Work Done:**
+- Corrected the footprint for each part 
+- Checked the ECE shop to make sure we have the appropriate capacitors and parts to solder onto the board
+
+---
+
+## April 22nd, 2025 Bench Testing and First Motor Control
+
+**Date:** April 22nd, 2025  
+**Objective:** Test motor control via ESP32 + DRV8833  
+**Work Done:**
+- Initial testing showed only power subsystem worked
+- Moved to breadboard, confirmed motor function via PWM
+
+**Measurements** 
+Mesured the output of the 5V and 3.3V regulator
+![5V Regulator Output](5VRegulatorOutput.png)
+![3.3V Regulator Output](3.3VRegulatorOuput.png)
+
+---
+
+## April 23rd, 2025 Evaluate 3D print and adjust  
+
+**Date:** April 23rd, 2025
+**Objective:** Evaluate 3D print and adjust  
+**Work Done:**
+- Found that ABS was used instead of PET-G and ABS is to heavy
+- Redesigned bot to be shorter and lighter
+- Updated spreadsheet to track part weights
+- Adjusted wheel mount height as the wheel holes were placed too high
+
+**TinkerCAD Link:**  
+[Design File](https://www.tinkercad.com/things/1qpqPXCBS9p-bottom/edit?returnTo=https%3A%2F%2Fwww.tinkercad.com%2Fdashboard&sharecode=AA-KI3Bmg5dcyBxRz8_BAfUHwUg40pOsH4alZPG4oS0)
+
+---
+
+## April 24th, 2025 Testing Breadboard
+
+**Date:** April 24th, 2025  
+**Objective:** Resolve motor control issues  
+**Work Done:**
+- Supplied 5V to ESP32 for successful motor operation
+- Realized that out PCB supplied 3.3V to the 5V pin which is incorrect because the PCB has an internal voltage regulator that steps down to 3.3V
+
+---
+
+## Figures, Schematics, and Diagrams
+
+![Block Diagram](BlockDiagram.png)
+
+---
+
+## References
+
+- ESP32-C3 DevKitM-1 Datasheet  
+- DRV8833 Dual H-Bridge Datasheet  
+- Thunder Power TP325-3SR70J Battery Datasheet  
+- [ECE 445 Wiki](https://ece.illinois.edu/ece445/wiki)
