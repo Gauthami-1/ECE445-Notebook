@@ -73,7 +73,7 @@ This notebook documents the design, development, and testing of our Antweight Ba
 **Work Done:**
 - Set up first breadboard demo using the ESP32 DevKit, mini breadboard, and basic Arduino code
 - Independently resolved major communication issue:
-    - Initially planned Bluetooth-based control, was able to connect esp32 to my computer via nRF Connect:
+    - Initially planned Bluetooth-based control, was able to connect esp32 to my phone via nRF Connect:
     ![bluetooth attempt](bluetooth_attempt.jpg)
     - Discovered Bluetooth Classic is not supported on iOS, and our team had no Android devices
     - Pivoted to Wi-Fi control and verified ESP32 soft AP setup
