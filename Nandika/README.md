@@ -43,7 +43,10 @@ This notebook documents the design, development, and testing of our Antweight Ba
 ## February 28, 2025 Begin PCB layout and circuit design
 **Objective:** Start PCB schematic in KiCad  
 **Work Done:**
-- Did the power subsystem as well as the communication subsystem part of the .sch file
+- Completed the power subsystem as well as the communication subsystem part of the .sch file
+![Power system](power_system_sch)
+![Communication system](control_first_sch)
+
 - TA gave lockers and kits
 
 ## March 1, 2025 Design Document
@@ -70,7 +73,8 @@ This notebook documents the design, development, and testing of our Antweight Ba
 **Work Done:**
 - Set up first breadboard demo using the ESP32 DevKit, mini breadboard, and basic Arduino code
 - Independently resolved major communication issue:
-    - Initially planned Bluetooth-based control
+    - Initially planned Bluetooth-based control, was able to connect esp32 to my computer via nRF Connect:
+    ![bluetooth attempt](bluetooth_attempt)
     - Discovered Bluetooth Classic is not supported on iOS, and our team had no Android devices
     - Pivoted to Wi-Fi control and verified ESP32 soft AP setup
 - Confirmed successful Wi-Fi connection between ESP32 and laptop via serial monitor
@@ -81,6 +85,7 @@ This notebook documents the design, development, and testing of our Antweight Ba
 **Objective:** Build interface to send commands to ESP32 over Wi-Fi
 **Work Done:**
 - Created a Python script to interact with the ESP32 web server via HTTP requests
+![python script](python_script)
 - Script allows live control of the robot with commands like forward, backward, left, right, stop
 - Validated command responses through serial prints and confirmed correct execution
 - This interface was critical for debugging and testing movement logic without relying on a physical controller
@@ -90,6 +95,7 @@ This notebook documents the design, development, and testing of our Antweight Ba
 **Objective:** Finish first correct  
 **Work Done:**
 - Identified and corrected outline-related errors in the original PCB layout, including incorrect board edge cuts and dimension misalignments that would have interfered with component placement and mechanical integration.
+![outline error](outline_error)
 - Verified proper spacing for all major components: ESP32-C3 module, DRV8833 motor driver, JST battery connector, and supporting passives
 
 ## March 26, 2025 Fixing foorprint issues
@@ -107,6 +113,7 @@ This notebook documents the design, development, and testing of our Antweight Ba
 - Added dedicated keys and buttons to spin the tombstone weapon left or right.
 - Integrated a speed slider to allow adjustable robot velocity.
 - Buttons and keys work in tandem to provide both manual and keyboard-based control options.
+![controller last](controller_last)
 
 
 
@@ -133,6 +140,9 @@ This notebook documents the design, development, and testing of our Antweight Ba
 - Reoriented the CAD schematic to avoid the previous print issue
 - The material used in this printer was ABS, so it was extremely heavy and we decided to not continue with this model
 - Adjusted design to lower bot height
+![reorientation model](reorientation_model)
+![model heavy](model_abs)
+
 
 
 
@@ -141,6 +151,8 @@ This notebook documents the design, development, and testing of our Antweight Ba
 **Work Done:**
 - Completed a third 3D print of the chassis, refining the design to improve motor and wheel integration.
 - The updated design resulted in a cleaner, more secure fit for drivetrain components, improving assembly quality and reliability.
+![final cad model](cad_car_model)
+
 
 ## April 27, 2025 Final Assembly and Testing
 **Objective:** Integrate all components and verify funtionality
@@ -150,6 +162,8 @@ This notebook documents the design, development, and testing of our Antweight Ba
 - Ensured consistent power delivery and successful command response via Wi-Fi.
 - Conducted live test of full system for 30+ minutes.
 - Controller with all speeds  maintained significant delay (>100ms) during control signal execution and lags after pressing multiple keys quickly (this is due to keypress triggers being queued in javascript) so switched over to the original mono-speed python script with minimal delay (<50ms>)
+![latency table](latency_table)
+
 - Validated drive control, weapon spin torque, and real-time interface sync.
 - Robot successfully navigated a test arena with responsive controls.
 
@@ -164,6 +178,8 @@ This notebook documents the design, development, and testing of our Antweight Ba
 - ESP32 Pinout Diagram – Seeed Studio
 - KiCad EDA Tool
 - YouTube – How Brushless Motors Work — https://www.youtube.com/watch?v=VnfX9YJbaU8
-- YouTube – How MOSFETs Work — https://www.youtube.com/watch?v=TEwy4QPfhsw- TinkerCAD Design File
+- YouTube – How MOSFETs Work — https://www.youtube.com/watch?v=TEwy4QPfhsw
+- TinkerCAD Design File
 - Keysight Multimeter 34461A
 - ECE 445 Wiki
+
