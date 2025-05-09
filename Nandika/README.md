@@ -56,7 +56,7 @@ This notebook documents the design, development, and testing of our Antweight Ba
 - Calculated total voltage, current, and power requirements for the full system.
 - Determined that the original power system using a single Thunder Power 325 mAh 3S (11.1V) battery would not provide sufficient current for all subsystems during peak load.
 - Concluded that two 11.1V batteries in parallel would be necessary to meet high current demand, particularly for the brushless motor and drivetrain motors during simultaneous operation.
-- Verified voltage compatibility of all components: ESP32 (3.3V), DRV8833 (5V), brushless motor (~12V), etc.
+- Verified voltage compatibility of all components: ESP32, DRV8833, motors 
 - Outlined methods to measure and validate continuous current supply using multimeters and oscilloscopes in the validation section.
 - Included risk mitigation measures (e.g., adding capacitors, testing under load) for the power system.
 - Parallel Configuration Calculation:
