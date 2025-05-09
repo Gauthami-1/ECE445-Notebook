@@ -26,12 +26,14 @@ This notebook documents the design, development, and testing of our Antweight Ba
 **Work Done:**
 - Selected components such as Pololu Micro Metal Gear Motors(High Torque) as well as the Emax RS2205 motor keeping cost and component weight in mind 
 - Begin assessing the components together
+**Estimated Current Draw by Subsystem:**
+
 | Subsystem             | Estimated Current (A)                  |
-| --------------------- | -------------------------------------- |
-| Weapon Motor (RS2205) | \~20A (continuous), \~25A (burst)      |
-| 2× Drive Motors       | \~3.5A each → 7A total                 |
-| ESP32 and logic       | \~0.5A                                 |
-| **Total**             | **\~27.5A (continuous), \~32A (peak)** |
+|-----------------------|----------------------------------------|
+| Weapon Motor (RS2205) | ~20A (continuous), ~25A (burst)        |
+| 2× Drive Motors       | ~3.5A each → 7A total                  |
+| ESP32 and logic       | ~0.5A                                  |
+| **Total**             | **~27.5A (continuous), ~32A (peak)**   |
 
 ## February 12, 2025 Component Reevaluation
 **Objective:** Reevaluate components based on requirements
