@@ -79,7 +79,7 @@ This notebook documents the design, development, and testing of our Antweight Ba
     ![bluetooth attempt](bluetooth_attempt.jpg)
     - Discovered Bluetooth Classic is not supported on iOS, and our team had no Android devices
     - Pivoted to Wi-Fi control and verified ESP32 soft AP setup
-    ![Wi-Fi setup in arduino](wifi_conection_passed.png)
+    ![Wi-Fi setup in arduino](wifi_connection_passed.png)
 
 - Confirmed successful Wi-Fi connection between ESP32 and laptop via serial monitor
 - This work laid the foundation for later HTTP-based motor control
